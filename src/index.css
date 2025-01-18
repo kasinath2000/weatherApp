@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    background-color: #9e9e9e; /* Replace with your desired color */
+  }
+  /* Custom Scrollbar Styling for the entire page */
+  ::-webkit-scrollbar {
+      width: 9px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #4caf50;
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #45a049;
+    }
+    
+    /* Optional: Custom scrollbar for specific scrollable content */
+    .scrollable {
+      overflow-y: auto;
+      max-height: 500px; /* Customize the height */
+    }
+    
