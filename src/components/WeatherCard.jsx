@@ -294,7 +294,7 @@ const WeatherCards = ({ weatherData, onCitySearch, onLocationClick }) => {
           color="primary"
           sx={{ mb: 3, cursor: "pointer" }}
         />
-        
+
         {/* Main Weather Details */}
         <Typography variant="h4" fontWeight="bold" gutterBottom sx={{ mb: 2 }}>
           {name}, {sys.country}
@@ -330,6 +330,7 @@ const WeatherCards = ({ weatherData, onCitySearch, onLocationClick }) => {
         >
           <TimeDisplay />
         </Box>
+        
       </Box>
 
       {/* Right Side: Weather Details Grid */}

@@ -1,6 +1,3 @@
-
-
-
 // import React, { useState, useEffect } from "react";
 // import axios from "axios";
 // import WeatherCards from "./components/WeatherCard";
@@ -84,6 +81,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import WeatherCards from "./components/WeatherCard";
+import { Box, Typography, Container } from "@mui/material";
 
 const API_URL = import.meta.env.VITE_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -94,9 +92,8 @@ const App = () => {
 
   const fetchWeatherData = async (lat, lon, city) => {
     try {
-      const params = lat && lon
-        ? { lat, lon, appid: API_KEY }
-        : { q: city, appid: API_KEY };
+      const params =
+        lat && lon ? { lat, lon, appid: API_KEY } : { q: city, appid: API_KEY };
       const response = await axios.get(API_URL, { params });
       setWeatherData(response.data);
       setError(null); // Clear any previous errors
@@ -146,12 +143,49 @@ const App = () => {
           <p>{error || "Loading..."}</p>
         )}
       </main>
-      <footer>
-  <p className="text-center bg-blue-700 text-gray-50 p-4">
-    © {new Date().getFullYear()} KM Weather App. All rights reserved.
-  </p>
-</footer>
-
+      <footer >
+      <Box
+          sx={{
+            backgroundColor: "blue",
+            color: "white",
+            py: 1.1,
+            px: 1.1,
+          }}
+        >
+          <Container maxWidth="lg">
+            <Typography variant="body2" align="center">
+              © {new Date().getFullYear()} KM Weather App. All rights reserved.
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-end",
+                textAlign: "right",
+                mt: 0.5,
+                color: "gray",
+              }}
+            >
+              <Typography variant="caption" sx={{ mb: 0.1, color: "lightgray" }}>
+                Last Updated:{" "}
+                {weatherData
+                  ? new Date(weatherData.dt * 1000).toLocaleTimeString()
+                  : "N/A"}
+              </Typography>
+              <Typography variant="caption" sx={{ color: "lightgray" }}>
+                Designed and Developed By{" "}
+                <a
+                
+                  href="https://www.linkedin.com/in/kasinath-mandal-a5a6621ba" target="_blank"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  Kasinath Mandal
+                </a>
+              </Typography>
+            </Box>
+          </Container>
+        </Box>
+      </footer>
     </div>
   );
 };
